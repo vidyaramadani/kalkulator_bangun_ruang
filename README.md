@@ -19,3 +19,6 @@
 #Praktikum1
 ![image](https://cloud.githubusercontent.com/assets/22124998/22396575/7dec1cb2-e58f-11e6-9375-19119c060a81.png)
 ![image](https://cloud.githubusercontent.com/assets/22124998/22396576/83003288-e58f-11e6-8413-579a02cd5dc6.png)
+
+#Praktikum2
+![p2](https://cloud.githubusercontent.com/assets/22124998/22404585/4c281866-e666-11e6-9625-ef6de9abdf86.JPG)

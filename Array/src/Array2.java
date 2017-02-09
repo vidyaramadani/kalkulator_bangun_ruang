@@ -31,8 +31,8 @@ public class Array2 {
         System.out.println("MK\tMinggu1\tMinggu2\tMinggu3\tRata-rata");
         
         for (int i=0;i<nilai.length;i++){
-            System.out.println(MP[i]+"\t");
-            System.out.println(ratarataMP[i]+"\n");
+            System.out.print(MP[i]+"\t");
+            System.out.print(ratarataMP[i]+"\n");
         }
     }
 }

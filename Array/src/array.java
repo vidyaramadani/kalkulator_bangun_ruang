@@ -20,6 +20,6 @@ public class array {
         jumlahhari [5] = 30;
         jumlahhari [6] = 31;
         
-        System.out.println("Bulan Januari memiliki " + jumlahhari[0]+" hari. ");
+        System.out.println("Bulan Januari memiliki " + jumlahhari[1]+" hari. ");
     }
 }

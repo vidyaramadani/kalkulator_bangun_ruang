@@ -106,23 +106,40 @@ public class pemilihandokter extends javax.swing.JFrame {
         nama.setText("Nama");
         getContentPane().add(nama);
         nama.setBounds(30, 120, 90, 14);
+
+        jtxtalamat.setEditable(false);
         getContentPane().add(jtxtalamat);
         jtxtalamat.setBounds(120, 140, 200, 30);
+
+        jtxtusia.setEditable(false);
         getContentPane().add(jtxtusia);
         jtxtusia.setBounds(120, 170, 200, 30);
+
+        jtxtjenis.setEditable(false);
         getContentPane().add(jtxtjenis);
         jtxtjenis.setBounds(120, 200, 200, 30);
+
+        jtxtgol.setEditable(false);
         getContentPane().add(jtxtgol);
         jtxtgol.setBounds(120, 230, 200, 30);
+
+        jtxtstatus.setEditable(false);
         getContentPane().add(jtxtstatus);
         jtxtstatus.setBounds(120, 260, 200, 30);
+
+        jtxtkewar.setEditable(false);
         getContentPane().add(jtxtkewar);
         jtxtkewar.setBounds(120, 290, 200, 30);
+
+        jtxtwaktu.setEditable(false);
         getContentPane().add(jtxtwaktu);
         jtxtwaktu.setBounds(120, 320, 200, 30);
+
+        jtxtspesial.setEditable(false);
         getContentPane().add(jtxtspesial);
         jtxtspesial.setBounds(120, 350, 200, 30);
 
+        jtxtnama.setEditable(false);
         jtxtnama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtnamaActionPerformed(evt);

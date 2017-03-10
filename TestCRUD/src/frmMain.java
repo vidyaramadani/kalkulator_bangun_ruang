@@ -1,9 +1,16 @@
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -20,9 +27,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMain
-     */
+    String nol_jam = "";
+    String nol_menit = "";
+    String nol_detik = "";
     public frmMain() {
         initComponents();
     }
@@ -40,19 +47,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        lblnis = new javax.swing.JTextField();
-        lblnama = new javax.swing.JTextField();
-        lblkelas = new javax.swing.JTextField();
-        lblemail = new javax.swing.JTextField();
-        laki = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lblalamat = new javax.swing.JTextArea();
+        labeltanggal = new javax.swing.JLabel();
+        labeljam = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
@@ -62,8 +58,26 @@ public class frmMain extends javax.swing.JFrame {
         clear = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
         edit = new javax.swing.JButton();
+        print = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         perempuan = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lblalamat = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        lblemail = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        lblkelas = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        laki = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblnis = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        lblnama = new javax.swing.JTextField();
+        tmpt = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        lahir = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -82,64 +96,16 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 0, 360, 40);
 
+        labeltanggal.setText("Tanggal");
+        jPanel1.add(labeltanggal);
+        labeltanggal.setBounds(540, 10, 60, 14);
+
+        labeljam.setText("Jam");
+        jPanel1.add(labeljam);
+        labeljam.setBounds(540, 30, 60, 14);
+
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 710, 60);
-
-        jLabel4.setText("NIS");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 90, 80, 20);
-
-        jLabel5.setText("NAMA");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 140, 90, 20);
-
-        jLabel6.setText("JENIS KELAMIN");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 190, 100, 20);
-
-        jLabel7.setText("KELAS");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 240, 100, 20);
-
-        jLabel8.setText("EMAIL");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 290, 100, 20);
-
-        jLabel9.setText("ALAMAT");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 340, 100, 20);
-        getContentPane().add(lblnis);
-        lblnis.setBounds(20, 110, 130, 30);
-        getContentPane().add(lblnama);
-        lblnama.setBounds(20, 160, 130, 30);
-        getContentPane().add(lblkelas);
-        lblkelas.setBounds(20, 260, 130, 30);
-
-        lblemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblemailActionPerformed(evt);
-            }
-        });
-        getContentPane().add(lblemail);
-        lblemail.setBounds(20, 310, 130, 30);
-
-        laki.setBackground(new java.awt.Color(102, 255, 51));
-        buttonGroup1.add(laki);
-        laki.setText("Laki-Laki");
-        laki.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lakiActionPerformed(evt);
-            }
-        });
-        getContentPane().add(laki);
-        laki.setBounds(20, 210, 90, 23);
-
-        lblalamat.setColumns(20);
-        lblalamat.setRows(5);
-        jScrollPane1.setViewportView(lblalamat);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 360, 220, 96);
+        jPanel1.setBounds(0, 0, 750, 60);
 
         jPanel3.setBackground(new java.awt.Color(102, 255, 51));
         jPanel3.setLayout(null);
@@ -147,23 +113,15 @@ public class frmMain extends javax.swing.JFrame {
         tblData.setBackground(new java.awt.Color(102, 255, 51));
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NIS", "NamaSiswa", "JenisKelamin", "Kelas", "Email", "Alamat"
+                "NIS", "NamaSiswa", "TempatLahir", "TanggalLahir", "JenisKelamin", "Kelas", "Email", "Alamat"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tblData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDataMouseClicked(evt);
@@ -172,10 +130,10 @@ public class frmMain extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblData);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 410, 320);
+        jScrollPane2.setBounds(10, 10, 470, 400);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(260, 140, 430, 340);
+        jPanel3.setBounds(260, 140, 490, 420);
 
         jPanel4.setBackground(new java.awt.Color(102, 255, 51));
         jPanel4.setLayout(null);
@@ -187,7 +145,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(save);
-        save.setBounds(20, 20, 73, 23);
+        save.setBounds(10, 20, 70, 23);
 
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +154,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(delete);
-        delete.setBounds(100, 20, 73, 23);
+        delete.setBounds(90, 20, 70, 23);
 
         clear.setText("Clear");
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +163,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(clear);
-        clear.setBounds(180, 20, 73, 23);
+        clear.setBounds(170, 20, 70, 23);
 
         refresh.setText("Refresh");
         refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +172,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(refresh);
-        refresh.setBounds(260, 20, 73, 23);
+        refresh.setBounds(250, 20, 71, 23);
 
         edit.setText("Edit");
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -223,10 +181,19 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(edit);
-        edit.setBounds(340, 20, 73, 23);
+        edit.setBounds(330, 20, 70, 23);
+
+        print.setText("Print");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        jPanel4.add(print);
+        print.setBounds(410, 20, 73, 23);
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(260, 70, 430, 60);
+        jPanel4.setBounds(260, 70, 490, 60);
 
         jPanel5.setBackground(new java.awt.Color(102, 255, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Isian Data Siswa"));
@@ -236,12 +203,86 @@ public class frmMain extends javax.swing.JFrame {
         buttonGroup1.add(perempuan);
         perempuan.setText("Perempuan");
         jPanel5.add(perempuan);
-        perempuan.setBounds(110, 140, 100, 23);
+        perempuan.setBounds(80, 250, 110, 30);
+
+        lblalamat.setColumns(20);
+        lblalamat.setRows(5);
+        jScrollPane1.setViewportView(lblalamat);
+
+        jPanel5.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 420, 220, 70);
+
+        jLabel9.setText("ALAMAT");
+        jPanel5.add(jLabel9);
+        jLabel9.setBounds(10, 400, 100, 20);
+
+        lblemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblemailActionPerformed(evt);
+            }
+        });
+        jPanel5.add(lblemail);
+        lblemail.setBounds(10, 370, 140, 30);
+
+        jLabel8.setText("EMAIL");
+        jPanel5.add(jLabel8);
+        jLabel8.setBounds(10, 340, 100, 20);
+        jPanel5.add(lblkelas);
+        lblkelas.setBounds(10, 300, 140, 30);
+
+        jLabel7.setText("KELAS");
+        jPanel5.add(jLabel7);
+        jLabel7.setBounds(10, 280, 100, 20);
+
+        laki.setBackground(new java.awt.Color(102, 255, 51));
+        buttonGroup1.add(laki);
+        laki.setText("Laki-Laki");
+        laki.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lakiActionPerformed(evt);
+            }
+        });
+        jPanel5.add(laki);
+        laki.setBounds(10, 250, 100, 30);
+
+        jLabel6.setText("JENIS KELAMIN");
+        jPanel5.add(jLabel6);
+        jLabel6.setBounds(10, 230, 100, 20);
+
+        jLabel4.setText("NIS");
+        jPanel5.add(jLabel4);
+        jLabel4.setBounds(10, 30, 80, 20);
+        jPanel5.add(lblnis);
+        lblnis.setBounds(10, 50, 140, 30);
+
+        jLabel5.setText("NAMA");
+        jPanel5.add(jLabel5);
+        jLabel5.setBounds(10, 80, 90, 20);
+        jPanel5.add(lblnama);
+        lblnama.setBounds(10, 100, 140, 30);
+
+        tmpt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tmptActionPerformed(evt);
+            }
+        });
+        jPanel5.add(tmpt);
+        tmpt.setBounds(10, 150, 140, 30);
+
+        jLabel10.setText("TANGGAL LAHIR");
+        jPanel5.add(jLabel10);
+        jLabel10.setBounds(10, 180, 90, 20);
+        jPanel5.add(lahir);
+        lahir.setBounds(10, 200, 140, 30);
+
+        jLabel11.setText("TEMPAT LAHIR");
+        jPanel5.add(jLabel11);
+        jLabel11.setBounds(10, 130, 90, 20);
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(10, 70, 240, 410);
+        jPanel5.setBounds(10, 70, 240, 500);
 
-        setBounds(0, 0, 720, 522);
+        setBounds(0, 0, 769, 604);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblemailActionPerformed
@@ -253,19 +294,33 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lakiActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-           if("".equals(lblnis.getText()) || "".equals(lblalamat.getText())||
-                   "".equals(lblkelas.getText()) || "".equals(lblnama.getText()) ||
-                   "".equals(lblemail.getText())){
-               JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", JOptionPane.WARNING_MESSAGE);
-           }else{
-               String JK= "";
+          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+          String tanggal = dateFormat.format(lahir.getDate());
+           String JK= "";
                if(laki.isSelected()){
-                   JK="L";
                }else{
-                   JK="P";
+                   JK="L";
                }
-               String SQL="INSERT INTO t_siswa (NIS,NamaSiswa,JenisKelamin,Kelas,Email,Alamat)"+"VALUES('"+lblnis.getText()+"','"+lblnama.getText()+"','"+JK+"','"
-                               +"','"+lblkelas.getText()+"','"+lblemail.getText()+"','"+lblalamat.getText()+"')";
+               if(perempuan.isSelected())
+                   JK="P";
+        if(lblnis.getText().equals("") ||  
+                lblnama.getText().equals("") ||
+                tanggal.equals("")||
+                JK.equals("")||
+                lblkelas.getText().equals("")||
+                lblemail.getText().equals("")||
+                tmpt.getText().equals("")||
+                lblalamat.getText().equals("")){
+               JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", 
+               JOptionPane.WARNING_MESSAGE);
+           }else{
+              
+               String SQL="INSERT INTO t_siswa VALUES"
+                       + "('"+lblnis.getText()+"',"
+                       + "'"+lblnama.getText()+"','"+tanggal+"','"+JK+"','"
+                       +"','"+lblkelas.getText()+"','"+lblemail.getText()
+                       +"',"+tmpt.getText()+"',"
+                       +"','"+lblalamat.getText()+"')";
                                int status = KoneksiDB.execute(SQL);
                                if(status== 1){
                                    JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -322,8 +377,10 @@ public class frmMain extends javax.swing.JFrame {
                 JK="P";
             }
             String SQL = "UPDATE t_siswa SET"
-                    +"WHERE NamaSiswa='"+lblnama.getText()+"',"+ "WHERE JenisKelamin='"+JK+"',"
-                    +"WHERE Kelas='"+lblkelas.getText()+"',"+ "WHERE Email='"+lblemail.getText()+"'"
+                    +"WHERE NamaSiswa='"+lblnama.getText()+"',"
+                    +"WHERE JenisKelamin='"+JK+"',"
+                    +"WHERE Kelas='"+lblkelas.getText()+"',"
+                    +"WHERE Email='"+lblemail.getText()+"'"
                     +"WHERE Alamat='"+lblalamat.getText()+"'"
                     +"WHERE NIS='"+lblnis.getText()+"'";
             int status = KoneksiDB.execute(SQL);
@@ -353,6 +410,54 @@ public class frmMain extends javax.swing.JFrame {
             lblalamat.setText(tblData.getValueAt(baris, 5).toString());
         }
     }//GEN-LAST:event_tblDataMouseClicked
+
+    private void tmptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmptActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tmptActionPerformed
+
+    public void setTanggal(){
+        java.util.Date skrg = new java.util.Date();
+        java.text.SimpleDateFormat kal = new
+        java.text.SimpleDateFormat("dd/MM/yyyy");
+        labeltanggal.setText (kal.format(skrg));
+    }
+    
+    public void SetJam(){
+        ActionListener taskPerformer = new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                Date dt = new Date();
+                int nilai_jam = dt.getHours();
+                int nilai_menit = dt.getMinutes();
+                int nilai_detik = dt.getSeconds();
+                if(nilai_jam <=9){
+                    nol_jam = "0";
+                }
+                if (nilai_menit<=9){
+                    nol_menit = "0";
+                }
+                if (nilai_detik <=9){
+                nol_detik = "0";
+                }
+                
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                labeljam.setText("Jam "+jam+":"+menit+":"+detik);
+            }
+           
+        };
+        new Timer(100, taskPerformer).start();
+    }
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        MessageFormat header = new MessageFormat("Biodata Siswa SMK TELKOM Malang");
+        MessageFormat footer = new MessageFormat("Page {0,number,integer}         ");
+        try{
+            tblData.print(JTable.PrintMode.FIT_WIDTH, header, footer,true, null, true, null);
+        }catch(java.awt.print.PrinterException e){
+            System.err.format("Cannot print %s%n", e.getMessage());
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_printActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,6 +500,8 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -408,6 +515,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labeljam;
+    private javax.swing.JLabel labeltanggal;
+    private com.toedter.calendar.JDateChooser lahir;
     private javax.swing.JRadioButton laki;
     private javax.swing.JTextArea lblalamat;
     private javax.swing.JTextField lblemail;
@@ -415,9 +525,11 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JTextField lblnama;
     private javax.swing.JTextField lblnis;
     private javax.swing.JRadioButton perempuan;
+    private javax.swing.JButton print;
     private javax.swing.JButton refresh;
     private javax.swing.JButton save;
     private javax.swing.JTable tblData;
+    private javax.swing.JTextField tmpt;
     // End of variables declaration//GEN-END:variables
 
     private void selectData() {

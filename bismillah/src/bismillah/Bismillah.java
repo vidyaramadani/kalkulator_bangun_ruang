@@ -57,7 +57,7 @@ public class Bismillah {
                   break;
                   
           case 2 :
-                  int submenu2;
+          int submenu2;
           submenu2 = Integer.parseInt(JOptionPane.showInputDialog(
           "Anda Memilih Menu Balok \n" +
           "------------------------------- \n" +
@@ -147,8 +147,7 @@ public class Bismillah {
               volumelimas = 0.3 * luasalaslimas1 + tinggilimas1;
               JOptionPane.showMessageDialog(null, "Luas Permukaan Limas Segitiga adalah : " + volumelimas);
               break;
-          }
-                  break;
+          } break;
                   
                   case 5 :
                   int submenu5;
